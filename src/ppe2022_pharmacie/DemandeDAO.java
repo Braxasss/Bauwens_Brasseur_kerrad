@@ -17,6 +17,14 @@ import java.util.ArrayList;
  */
 public class DemandeDAO extends DAO<Demande>{
 
+    /*
+    Methode Create:
+    Elle crée une demande en prenant pour paramètre: 
+    -l'id du service  
+    -l'id du médicament 
+    -la quantité nécessaire
+    Elle retourne un Booléen qui vaut true si la commande a été crée ou un message d'erreur si non 
+    */
     @Override
     public Boolean create(Demande unObjet) {
         if (pdo == null) {
@@ -38,6 +46,12 @@ public class DemandeDAO extends DAO<Demande>{
         return Check;
     }
 
+    /*
+    Methode find:
+    Elle permet de trouver une commande 
+    Elle prends en paramètres l'id d'une commande
+    Elle renvoie les informations de la commande
+    */
     @Override
     public Demande find(int id) {
         if (pdo == null) {
@@ -67,6 +81,12 @@ public class DemandeDAO extends DAO<Demande>{
         return uneDemande;
     }
 
+    /*
+    Methode update:
+    Elle mets a jour une demande en prenant pour paramètre: 
+    -Un objet Demande
+    Elle retourne un Booléen qui vaut true si la commande a été modifié ou un message d'erreur si non 
+    */
     @Override
     public Boolean update(Demande unObjet) {
         String requete = "Update demande set idservice=?, idmedicament=?, quantite=? where iddemande=?";
@@ -86,6 +106,12 @@ public class DemandeDAO extends DAO<Demande>{
         return check;
     }
 
+    /*
+    Methode delete:
+    Elle supprime une demande en prenant pour paramètre: 
+    -un objet demande
+    Elle retourne un Booléen qui vaut true si la commande a été supprimé ou un message d'erreur si non 
+    */
     @Override
     public Boolean delete(Demande unObjet) {
         if (pdo == null) {
@@ -105,6 +131,12 @@ public class DemandeDAO extends DAO<Demande>{
         return check;
     }
 
+    /*
+    Methode findAll:
+    Elle affiche toutes les demande
+    Elle ne prends pas de paramètres
+    Elle retourne une liste de toutes les commandes
+    */
     @Override
     public ArrayList<Demande> findAll() {
         if (pdo == null) {
@@ -133,6 +165,12 @@ public class DemandeDAO extends DAO<Demande>{
         return lesDemandes;
     }
     
+    /*
+    Methode AfficherDemandeParService:
+    Elle affiche toutes les commandes d'un meme service en prenant en paramètres:
+    -l'id d'un service
+    Elle retourne une liste de toutes les commandes du service  
+    */
     public ArrayList<Demande> AfficherDemandeParService(int idService) {
         if (pdo == null) {
             Connection();

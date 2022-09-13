@@ -8,7 +8,7 @@ package ppe2022_pharmacie;
 import java.security.MessageDigest;
 import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
-import javax.xml.bind.DatatypeConverter;
+import jakarta.xml.bind.DatatypeConverter;
 
 /**
  *

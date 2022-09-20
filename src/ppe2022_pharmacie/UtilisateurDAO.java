@@ -16,6 +16,12 @@ import java.util.ArrayList;
 public class UtilisateurDAO extends DAO<Utilisateur> {
 
     @Override
+    /*
+     * Méthode creat(Utilisateur unObjet):
+     * Prends en parametre un objet Utilisateur(login, mot de passe, service).
+     * Retourne un Booléen.
+     * Ajoute à la base de donnée un utilisateurs en fonction du login, mot de passe et du service.
+     */
     public Boolean create(Utilisateur unObjet) {
         boolean estFonctionnel = false;
         try {
@@ -35,11 +41,25 @@ public class UtilisateurDAO extends DAO<Utilisateur> {
     }
 
     @Override
+    /*
+     * Méthode find(int id) :
+     * Prend en parametre un id.
+     * Retourne un objet Utilisateurs.
+     * Affiche l'utilisateur correspondant à l'id entrer en parametre.
+     * 
+     */
     public Utilisateur find(int id) {
         throw new UnsupportedOperationException("Not supported."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
+    /*
+     * Méthode update(Utilisateur unUser) :
+     * Prend en parametre un objet Utilisateur(id, login, mot de passe, service).
+     * Retourne un booléen.
+     * Mets à jour les donné d'un utilisateurs.
+     * 
+     */
     public Boolean update(Utilisateur unUser) {
         boolean estFonctionnel = false;
         String requete = "Update authentification set login = ?, passe=?, service=? where idpersonnel=?";
@@ -61,6 +81,13 @@ public class UtilisateurDAO extends DAO<Utilisateur> {
     }
 
     @Override
+    /*
+     * Méthode delete(Utilisateur unUser) :
+     * Prend en parametre un objet Utilisateur(id, login, mot de passe, service).
+     * Retourne un booléen.
+     * Supprime un utilisateur de la BDD.
+     * 
+     */
     public Boolean delete(Utilisateur unObjet) {
         boolean estFonctionnel=  false;
         String requete = "delete from authentification where idpersonnel=?";
@@ -78,6 +105,11 @@ public class UtilisateurDAO extends DAO<Utilisateur> {
     }
 
     @Override
+    /* Méthode findAll() : 
+     * Ne prend pas de parametres.
+     * Retourne une Collection de Service.
+     * Affiche tout les services.
+    */
     public ArrayList<Utilisateur> findAll() {
         String requete = "select login, service.libelle, service, idpersonnel, passe from authentification join service on authentification.service = service.idservice";
         ArrayList<Utilisateur> lesUsers = new ArrayList<>();
@@ -100,6 +132,13 @@ public class UtilisateurDAO extends DAO<Utilisateur> {
         return lesUsers;
     }
     
+    /*
+     * Méthode Authentification(String login, String password) :
+     * Prend en parametre un login et un password (String).
+     * Retourne un tableau d'entier.
+     * Retourne un tableau comprenant le nombrede ligne, le service et l'id du personnel correspondant au loginet mdp.
+     *
+     */
     public int[] Authentification(String login, String password) {
         int[] infos = new int[3];
         if (pdo == null) {
@@ -122,6 +161,12 @@ public class UtilisateurDAO extends DAO<Utilisateur> {
         return infos;
     }
     
+    /*
+     * Méthode getHashMdp(String login):
+     * Prend en parametre une chaine (le login).
+     * Retourne une chaine dse caracteres.
+     * Retourne le Hash du Mot de passe correspondant au login.
+     */
     public String getHashMdp(String login) {
         String info = "";
         if (pdo == null) {

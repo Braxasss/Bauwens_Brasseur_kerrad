@@ -23,9 +23,9 @@ abstract class DAO<T> {
     Aucun retour
     */
     public static void Connection() {
-        String url = "jdbc:postgresql://localhost:5432/PPE2022_Hopital_Pharmacie_BBP";
+        String url = "jdbc:postgresql://192.168.1.34:5432/PPE2022_BDD_Pharmacie_BBP";
         String user = "postgres";
-        String passwd = "root";
+        String passwd = "Erty1234";
         //Etablir connexion
         try {
             pdo = DriverManager.getConnection(url, user, passwd);

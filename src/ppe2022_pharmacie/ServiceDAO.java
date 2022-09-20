@@ -20,6 +20,13 @@ public class ServiceDAO extends DAO<Service> {
     }
 
     @Override
+    /*
+     * Méthode find(int id) :
+     * Prend en parametre un id.
+     * Retourne un objet Service.
+     * Affiche le service correspondant à l'id entrer en parametre.
+     * 
+     */
     public Service find(int id) {
         String requete = "select libelle from service where idservice = " + id;
         Service service = null;
@@ -39,16 +46,36 @@ public class ServiceDAO extends DAO<Service> {
     }
 
     @Override
+    /*
+     * Méthode update(Service unObjet) :
+     * Prend en parametre un objet Service.
+     * Retourne un booléen.
+     * Mets à jour les donné d'un service.
+     * 
+     */
     public Boolean update(Service unObjet) {
         throw new UnsupportedOperationException("Not supported"); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
+    /*
+     * Méthode delete(Service unObjet) :
+     * Prend en parametre un objet Service.
+     * Retourne un booléen.
+     * Supprime un service.
+     * 
+     */
     public Boolean delete(Service unObjet) {
         throw new UnsupportedOperationException("Not supported"); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
+    
+    /* Méthode findAll() : 
+     * Ne prend pas de parametres.
+     * Retourne une Collection de Service.
+     * Affiche tout les services.
+    */
     public ArrayList<Service> findAll() {
         ArrayList<Service> lesService = new ArrayList<>();
         String requete = "select * from service";
@@ -66,6 +93,13 @@ public class ServiceDAO extends DAO<Service> {
         }
         return lesService;
     }
+
+    /*
+     * Méthode getIdService(String libelle) :
+     * Prend en parametre le libelle d'un Service.
+     * Retourne un entier.
+     * Affiche l'id du service possédant le libelle mis en parametre.
+     */
     public int getIdService(String libelle) {
         int idService = 0;
         try {

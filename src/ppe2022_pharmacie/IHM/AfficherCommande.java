@@ -1,11 +1,12 @@
 package ppe2022_pharmacie.IHM;
 
+import ppe2022_pharmacie.Metiers.Commandes;
 import java.util.ArrayList;
 import java.util.Scanner;
 import javax.swing.DefaultListModel;
 import javax.swing.JFrame;
+import ppe2022_pharmacie.DAOClass.*;
 
-import ppe2022_pharmacie.ClasseMetier.Commandes;
 
 public class AfficherCommande extends javax.swing.JFrame {
 

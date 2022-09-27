@@ -1,5 +1,7 @@
-package ppe2022_pharmacie;
+package ppe2022_pharmacie.DAOClass;
 
+import ppe2022_pharmacie.Metiers.Medicament;
+import ppe2022_pharmacie.*;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;

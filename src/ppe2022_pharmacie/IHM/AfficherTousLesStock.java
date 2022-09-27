@@ -1,13 +1,13 @@
 package ppe2022_pharmacie.IHM;
 
+import ppe2022_pharmacie.Metiers.Utilisateur;
+import ppe2022_pharmacie.Metiers.Medicament;
 import java.util.ArrayList;
 import java.util.Scanner;
 import javax.swing.DefaultListModel;
 import javax.swing.JFrame;
+import ppe2022_pharmacie.DAOClass.*;
 import javax.swing.JOptionPane;
-
-import ppe2022_pharmacie.ClasseMetier.Medicament;
-import ppe2022_pharmacie.ClasseMetier.Utilisateur;
 
 public class AfficherTousLesStock extends javax.swing.JFrame {
     

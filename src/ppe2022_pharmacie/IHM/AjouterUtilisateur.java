@@ -5,12 +5,13 @@
  */
 package ppe2022_pharmacie.IHM;
 
+import ppe2022_pharmacie.Metiers.Utilisateur;
+import ppe2022_pharmacie.Metiers.Service;
 import java.security.MessageDigest;
 import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
 import jakarta.xml.bind.DatatypeConverter;
-import ppe2022_pharmacie.ClasseMetier.Service;
-import ppe2022_pharmacie.ClasseMetier.Utilisateur;
+import ppe2022_pharmacie.DAOClass.*;
 
 /**
  *
@@ -95,7 +96,7 @@ public class AjouterUtilisateur extends javax.swing.JFrame {
 
         jButton3.setText("jButton3");
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         lblPasse.setText("Login");
 

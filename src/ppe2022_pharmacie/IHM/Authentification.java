@@ -3,18 +3,16 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package ppe2022_pharmacie.ClasseMetier;
+package ppe2022_pharmacie.IHM;
 
+import ppe2022_pharmacie.Metiers.Utilisateur;
+import ppe2022_pharmacie.Metiers.Service;
 import java.io.UnsupportedEncodingException;
 import java.security.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-
+import ppe2022_pharmacie.DAOClass.*;
 import jakarta.xml.bind.DatatypeConverter;
-import ppe2022_pharmacie.IHM.AfficherDemandes;
-import ppe2022_pharmacie.IHM.AfficherLesUsers;
-import ppe2022_pharmacie.IHM.AfficherTousLesStock;
-
 import javax.swing.JFrame;
 
 /**

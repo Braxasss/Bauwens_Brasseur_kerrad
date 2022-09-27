@@ -1,4 +1,4 @@
-package ppe2022_pharmacie;
+package ppe2022_pharmacie.Metiers;
 
 public class Commandes {
     //Attribut

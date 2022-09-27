@@ -5,16 +5,16 @@
  */
 package ppe2022_pharmacie.IHM;
 
+import ppe2022_pharmacie.Metiers.Utilisateur;
+import ppe2022_pharmacie.Metiers.Medicament;
+import ppe2022_pharmacie.Metiers.Demande;
 import java.util.ArrayList;
 import javax.swing.ComboBoxModel;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.DefaultListModel;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
-
-import ppe2022_pharmacie.ClasseMetier.Demande;
-import ppe2022_pharmacie.ClasseMetier.Medicament;
-import ppe2022_pharmacie.ClasseMetier.Utilisateur;
+import ppe2022_pharmacie.DAOClass.*;
 
 /**
  *
@@ -81,7 +81,7 @@ public class CreationDeDemande extends javax.swing.JFrame {
         lblService = new javax.swing.JLabel();
         btnModifier = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel1.setText("Création d'une Demande");
 

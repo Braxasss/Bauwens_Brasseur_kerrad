@@ -4,11 +4,11 @@
  */
 package ppe2022_pharmacie.IHM;
 
+import ppe2022_pharmacie.Metiers.Utilisateur;
 import java.util.ArrayList;
 import javax.swing.DefaultListModel;
 import javax.swing.JFrame;
-
-import ppe2022_pharmacie.ClasseMetier.Utilisateur;
+import ppe2022_pharmacie.DAOClass.*;
 
 /**
  *
@@ -134,7 +134,7 @@ public class AfficherLesUsers extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnQuitter, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnDeconnexion, javax.swing.GroupLayout.DEFAULT_SIZE, 106, Short.MAX_VALUE))
+                        .addComponent(btnDeconnexion, javax.swing.GroupLayout.PREFERRED_SIZE, 106, Short.MAX_VALUE))
                     .addComponent(jScrollPane1))
                 .addContainerGap())
         );

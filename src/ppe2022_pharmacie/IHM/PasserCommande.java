@@ -1,9 +1,9 @@
 package ppe2022_pharmacie.IHM;
 
+import ppe2022_pharmacie.Metiers.Medicament;
 import java.util.ArrayList;
 import javax.swing.JFrame;
-
-import ppe2022_pharmacie.ClasseMetier.Medicament;
+import ppe2022_pharmacie.DAOClass.*;
 
 public class PasserCommande extends javax.swing.JFrame {
     
@@ -69,7 +69,7 @@ public class PasserCommande extends javax.swing.JFrame {
         lblId1.setText("ID :");
         lblId1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         lblTitre.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
         lblTitre.setForeground(new java.awt.Color(255, 51, 51));

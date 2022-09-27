@@ -5,12 +5,12 @@
  */
 package ppe2022_pharmacie.IHM;
 
+import ppe2022_pharmacie.Metiers.Utilisateur;
+import ppe2022_pharmacie.Metiers.Demande;
 import java.util.ArrayList;
 import javax.swing.DefaultListModel;
 import javax.swing.JFrame;
-
-import ppe2022_pharmacie.ClasseMetier.Demande;
-import ppe2022_pharmacie.ClasseMetier.Utilisateur;
+import ppe2022_pharmacie.DAOClass.*;
 
 /**
  *

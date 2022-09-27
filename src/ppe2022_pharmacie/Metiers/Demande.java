@@ -1,5 +1,5 @@
 package ppe2022_pharmacie.Metiers;
-
+import ppe2022_pharmacie.DAOClass.*;
 /**
  *
  * @author sio2021

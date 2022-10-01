@@ -83,7 +83,7 @@ public class ServiceDAO extends DAO<Service> {
      */
     public ArrayList<Service> findAll() {
         ArrayList<Service> lesService = new ArrayList<>();
-        String requete = "select * from service";
+        String requete = "select idService,libelle from service";
         try {
             Statement state = pdo.createStatement();
             ResultSet serviceResultat = state.executeQuery(requete);

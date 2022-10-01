@@ -61,12 +61,12 @@ public class DemandeDAO extends DAO<Demande> {
         Demande uneDemande = null;
         try {
             Statement state = pdo.createStatement();
-            String requete = "SELECT * FROM demande where iddemande=?";
+            String requete = "SELECT idd,ids,idm,qtte FROM demande where iddemande=?";
             PreparedStatement prepare = pdo.prepareStatement(requete);
             prepare.setInt(1, id);
             ResultSet userResultat = prepare.executeQuery();
 
-            while (userResultat.next()) {
+            if (userResultat.next()) {
                 int idD = userResultat.getInt(1);
                 int idS = userResultat.getInt(2);
                 int idM = userResultat.getInt(3);
@@ -90,7 +90,9 @@ public class DemandeDAO extends DAO<Demande> {
      */
     @Override
     public Boolean update(Demande unObjet) {
-        String requete = "Update demande set idservice=?, idmedicament=?, quantite=? where iddemande=?";
+        String requete
+                = "Update demande set idservice=?, idmedicament=?, quantite=? "
+                + "where iddemande=?";
         boolean check = false;
         try {
             PreparedStatement prepare = pdo.prepareStatement(requete);
@@ -146,7 +148,7 @@ public class DemandeDAO extends DAO<Demande> {
         ArrayList<Demande> lesDemandes = new ArrayList<Demande>();
         try {
             Statement state = pdo.createStatement();
-            String requete = "SELECT * FROM demande";
+            String requete = "SELECT idd,ids,idm,qtte FROM demande";
             ResultSet demandeResultat = state.executeQuery(requete);
 
             while (demandeResultat.next()) {
@@ -178,7 +180,7 @@ public class DemandeDAO extends DAO<Demande> {
         }
         ArrayList<Demande> lesDemandes = new ArrayList<Demande>();
         try {
-            String requete = "SELECT * FROM demande where idservice=?";
+            String requete = "SELECT idd,ids,idm,qtte FROM demande where idservice=?";
             PreparedStatement prepare = pdo.prepareStatement(requete);
 
             prepare.setInt(1, idService);

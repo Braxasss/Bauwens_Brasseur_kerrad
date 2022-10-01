@@ -224,7 +224,8 @@ public class MedicamentDAO extends DAO<Medicament> {
         ArrayList<Medicament> lesStocks = new ArrayList<Medicament>();
         try {
             Statement state = pdo.createStatement();
-            String requete = "select * from medicament where qtte <= seuil";
+            String requete = "select id,libelle,qtte,seuil,categorie "
+                    + "from medicament where qtte <= seuil";
             ResultSet stockResultat = state.executeQuery(requete);
             while (stockResultat.next()) {
                 int id = stockResultat.getInt(1);
@@ -292,7 +293,8 @@ public class MedicamentDAO extends DAO<Medicament> {
         try {
             Statement state = pdo.createStatement();
             String requete
-                    = "select * from medicament where categorie = \'"
+                    = "select id,libelle,qttes,seuil,categorie "
+                    + "from medicament where categorie = \'"
                     + pCategorie + "\'";
             ResultSet stockResultat = state.executeQuery(requete);
             while (stockResultat.next()) {
@@ -328,7 +330,8 @@ public class MedicamentDAO extends DAO<Medicament> {
         ArrayList<Medicament> lesMedicaments = new ArrayList<Medicament>();
         try {
             Statement state = pdo.createStatement();
-            String requete = "select * from medicament ";
+            String requete = "select id,libelle,qttes,seuil,categorie "
+                    + "from medicament ";
             ResultSet medicResultat = state.executeQuery(requete);
             while (medicResultat.next()) {
                 int id = medicResultat.getInt(1);

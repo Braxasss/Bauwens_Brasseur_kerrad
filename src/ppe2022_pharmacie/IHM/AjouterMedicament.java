@@ -248,11 +248,12 @@ public class AjouterMedicament extends javax.swing.JFrame {
         int seuil = Integer.parseInt(stringseuil);
         String categorie = txtCategorie.getText();
 
-        Medicament unMedicament = new Medicament(id, libelle, qtte, seuil, categorie);
+        Medicament unMedicament = 
+                new Medicament(id, libelle, qtte, seuil, categorie);
         passerelleMedic.create(unMedicament);
 
         if (passerelleMedic.create(unMedicament) == true) {
-            lblValider.setText("La commande est refusévalidé.");
+            lblValider.setText("La commande est refusé.");
         } else {
             lblValider.setText("La commande est validé.");
         };

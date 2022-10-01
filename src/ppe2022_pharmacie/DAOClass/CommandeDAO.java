@@ -153,7 +153,8 @@ public class CommandeDAO extends DAO<Commandes> {
         ArrayList<Commandes> lesCommandes = new ArrayList<Commandes>();
         try {
             Statement state = pdo.createStatement();
-            String requete = "select * from commandes";
+            String requete = "select idc,fournisseur,medicament,qtte "
+                    + "from commandes";
             ResultSet commandesResultat = state.executeQuery(requete);
             while (commandesResultat.next()) {
                 int idc = commandesResultat.getInt(1);

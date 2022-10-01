@@ -37,7 +37,7 @@ public class CreationDeDemande extends javax.swing.JFrame {
         initComponents();
         btnModifier.setVisible(false);
         DefaultComboBoxModel<Medicament> lisModel = new DefaultComboBoxModel<>();
-        
+
         for (Medicament pdt : passerelleMedicament.findAll()) {
             lisModel.addElement(pdt);
         }
@@ -45,7 +45,7 @@ public class CreationDeDemande extends javax.swing.JFrame {
 
         lblService.setText(unUser.getService().getLibelle());
     }
-    
+
     public CreationDeDemande(Utilisateur unUser, Demande uneDemande) {
         idService = unUser.getService().getIdService();
         idDemande = uneDemande.getIdD();
@@ -53,14 +53,14 @@ public class CreationDeDemande extends javax.swing.JFrame {
         initComponents();
         DefaultComboBoxModel<Medicament> lisModel = new DefaultComboBoxModel<>();
         btnV.setVisible(false);
-        
+
         for (Medicament pdt : passerelleMedicament.findAll()) {
             lisModel.addElement(pdt);
         }
         cbxMedicament.setModel(lisModel);
-        
+
         cbxMedicament.setSelectedItem(uneDemande.getMedicament());
-        
+
         txtQtte.setText(String.valueOf(uneDemande.getQtte()));
 
         lblService.setText(uneDemande.getService().getLibelle());
@@ -193,7 +193,6 @@ public class CreationDeDemande extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-
     private void btnVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVActionPerformed
         // TODO add your handling code here:
         Medicament med = (Medicament) cbxMedicament.getSelectedItem();
@@ -254,7 +253,7 @@ public class CreationDeDemande extends javax.swing.JFrame {
         int qtte = Integer.parseInt(Sqtte);
 
         Demande uneDemande = new Demande(idDemande, idServ, idMed, qtte);
-        
+
         passerelleDemande.update(uneDemande);
     }//GEN-LAST:event_btnModifierMouseClicked
 

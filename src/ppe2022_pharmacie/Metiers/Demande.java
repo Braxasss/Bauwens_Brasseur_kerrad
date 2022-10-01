@@ -1,15 +1,17 @@
 package ppe2022_pharmacie.Metiers;
+
 import ppe2022_pharmacie.DAOClass.*;
+
 /**
  *
  * @author sio2021
  */
 public class Demande {
-    
+
     private final ServiceDAO passerelleService = new ServiceDAO();
-    
+
     private final MedicamentDAO passerelleMedicament = new MedicamentDAO();
-    
+
     private int idDemande;
     private Service service;
     private Medicament medicament;
@@ -53,10 +55,12 @@ public class Demande {
     public void setQtte(int qtte) {
         this.qtte = qtte;
     }
-    
+
     @Override
     public String toString() {
-        return "Demande{" + "idD=" + idDemande + ", service = " + service.getLibelle() + ", medicament= " + medicament.getLibelle() + ", qtte=" + qtte + '}';
+        return "Demande{" + "idD=" + idDemande + ", service = "
+                + service.getLibelle() + ", medicament= "
+                + medicament.getLibelle() + ", qtte=" + qtte + '}';
 
     }
 }

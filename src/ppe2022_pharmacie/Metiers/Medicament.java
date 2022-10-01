@@ -1,24 +1,26 @@
 package ppe2022_pharmacie.Metiers;
 
 public class Medicament {
+
     //Attribut
     private int id;
     private String libelle;
     private int qtteStock;
     private int seuil;
     private String categorie;
-    
+
     //Constructeur
-    public Medicament(int pId, String pLibelle, int pQtteStock, int pSeuil, String pCategorie){
+    public Medicament(
+            int pId, String pLibelle, int pQtteStock, int pSeuil,
+            String pCategorie) {
         id = pId;
         libelle = pLibelle;
         qtteStock = pQtteStock;
         seuil = pSeuil;
         categorie = pCategorie;
     }
-    
-    //Accesseur
 
+    //Accesseur
     public int getId() {
         return id;
     }
@@ -30,17 +32,16 @@ public class Medicament {
     public int getQtteStock() {
         return qtteStock;
     }
-    
+
     public int getSeuil() {
         return seuil;
     }
-    
+
     public String getCategorie() {
         return categorie;
     }
-    
-    //Mutateur
 
+    //Mutateur
     public void setId(int id) {
         this.id = id;
     }
@@ -52,20 +53,20 @@ public class Medicament {
     public void setQtteStock(int qtteStock) {
         this.qtteStock = qtteStock;
     }
-    
+
     public void setSeuil(int seuil) {
         this.seuil = seuil;
     }
-    
+
     public void setCategorie(String categorie) {
         this.categorie = categorie;
     }
-    
-    //Méthode
 
+    //Méthode
     @Override
     public String toString() {
-        return "| id: "+id+" | Libelle: "+libelle+" | Quantitée en Stock: "+qtteStock+" | Seuil: "+seuil+" | Categorie: "+categorie+"\n";
+        return "| id: " + id + " | Libelle: " + libelle + " | Quantitée en Stock: "
+                + qtteStock + " | Seuil: " + seuil + " | Categorie: " + categorie + "\n";
     }
-    
+
 }

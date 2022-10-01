@@ -10,6 +10,7 @@ package ppe2022_pharmacie.Metiers;
  * @author hbana
  */
 public class Service {
+
     private int idService;
     private String libelle;
 
@@ -30,7 +31,5 @@ public class Service {
     public String toString() {
         return libelle;
     }
-    
-    
-    
+
 }

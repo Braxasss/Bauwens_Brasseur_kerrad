@@ -26,22 +26,23 @@ public class AfficherDemandes extends javax.swing.JFrame {
     public AfficherDemandes(boolean pharmacien, Utilisateur unUser) {
         this.unUser = unUser;
         this.setResizable(false);
-        
-        
+
         passerelleDemande.Connection();
         initComponents();
         DefaultListModel listModel = new DefaultListModel();
-        
+
         if (!pharmacien) {
             btnValider.setVisible(false);
 
-            for (Demande dmd : passerelleDemande.AfficherDemandeParService(unUser.getService().getIdService())) {
+            for (Demande dmd
+                    : passerelleDemande.AfficherDemandeParService(
+                            unUser.getService().getIdService())) {
                 listModel.addElement(dmd);
             }
         } else {
             btnCreerDemande.setVisible(false);
             btnDeconnexion.setVisible(false);
-            
+
             for (Demande dmd : passerelleDemande.findAll()) {
                 listModel.addElement(dmd);
             }
@@ -206,7 +207,6 @@ public class AfficherDemandes extends javax.swing.JFrame {
 
     private void lstDemandesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lstDemandesMouseClicked
 
-
     }//GEN-LAST:event_lstDemandesMouseClicked
 
     private void btnValiderMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnValiderMouseClicked
@@ -215,7 +215,8 @@ public class AfficherDemandes extends javax.swing.JFrame {
         Object val = lstDemandes.getModel().getElementAt(choix);
         Demande uneDmd = (Demande) val;
         int qtteM = passerelleMedicament.avoirQtte(uneDmd.getMedicament().getId());
-        passerelleMedicament.validerQtte(uneDmd.getQtte(), qtteM, uneDmd.getMedicament().getId());
+        passerelleMedicament.validerQtte(
+                uneDmd.getQtte(), qtteM, uneDmd.getMedicament().getId());
         passerelleDemande.delete(uneDmd);
         //Actualisation
         DefaultListModel listModel = new DefaultListModel();
@@ -245,9 +246,9 @@ public class AfficherDemandes extends javax.swing.JFrame {
     private void btnModifierMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnModifierMouseClicked
         int choix = lstDemandes.getSelectedIndex();
         Object val = lstDemandes.getModel().getElementAt(choix);
-        
+
         Demande laDemande = (Demande) val;
-        
+
         new CreationDeDemande(unUser, laDemande).setVisible(true);
     }//GEN-LAST:event_btnModifierMouseClicked
 

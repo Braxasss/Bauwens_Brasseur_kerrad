@@ -9,12 +9,14 @@ package ppe2022_pharmacie.Metiers;
  * @author sio2021
  */
 public class Utilisateur {
+
     private int idUser;
     private String hash;
     private String login;
     private Service unService;
 
-    public Utilisateur(String login, Service unService, int idUser, String Hash) {
+    public Utilisateur(
+            String login, Service unService, int idUser, String Hash) {
         this.hash = Hash;
         this.login = login;
         this.unService = unService;
@@ -28,8 +30,8 @@ public class Utilisateur {
     public String getLogin() {
         return login;
     }
-    
-    public int getIdUser(){
+
+    public int getIdUser() {
         return idUser;
     }
 
@@ -57,13 +59,10 @@ public class Utilisateur {
         this.unService = service;
     }
 
-    
-    
     @Override
     public String toString() {
-        return "login=" + login + " | service=" + unService.getLibelle() + " | idService=" + unService.getIdService();
+        return "login=" + login + " | service=" + unService.getLibelle()
+                + " | idService=" + unService.getIdService();
     }
-    
-    
-    
+
 }

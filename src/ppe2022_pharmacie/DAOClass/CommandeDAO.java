@@ -7,14 +7,16 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import ppe2022_pharmacie.*;
 
-public class CommandeDAO extends DAO<Commandes>{
+public class CommandeDAO extends DAO<Commandes> {
+
     @Override
     /*
     Cette méthode permet de créer une commande de médicament.
     Paramètre : un objet Commandes
     Type de retour : booléen précisant si la commande a pu être passer ou non
-    Insère une ligne dans la table commandes avec pour paramètre : id, fournisseur, médicament et quantité
-    */
+    Insère une ligne dans la table commandes avec pour paramètre :
+    id, fournisseur, médicament et quantité
+     */
     public Boolean create(Commandes uneCommande) {
         boolean result = false;
         if (pdo == null) {
@@ -46,13 +48,14 @@ public class CommandeDAO extends DAO<Commandes>{
     Cette méthode permet de chercher un médicament dans le stock.
     Paramètre : un entier correspondant à l'id du médicament dans la table stock
     Valeur de retour : un objet Commandes
-    */
+     */
     public Commandes find(int pId) {
         if (pdo == null) {
             Connection();
         }
         Commandes uneCommande = null;
-        String requete = "Select libelle,qtte,seuil,categorie From stock Where id=?";
+        String requete
+                = "Select libelle,qtte,seuil,categorie From stock Where id=?";
         try {
             PreparedStatement prepare = pdo.prepareStatement(requete);
             prepare.setInt(1, pId);
@@ -74,20 +77,22 @@ public class CommandeDAO extends DAO<Commandes>{
     /*
     Cette méthode permet de mettre à jour la table commandes
     Paramètre : un objet Commandes
-    Type de retour : un booléen indiquant si la commande a pu être modifié ou non
-    */
+    Type de retour : 
+    un booléen indiquant si la commande a pu être modifié ou non
+     */
     public Boolean update(Commandes uneCommande) {
         boolean result = false;
         if (pdo == null) {
             Connection();
         }
-        
+
         int id = uneCommande.getIdc();
         String fournisseur = uneCommande.getFournisseur();
         String medicament = uneCommande.getMedicament();
         int qtte = uneCommande.getQtte();
-        String requete = "Update commandes Set fournisseur=?,medicament=?,qtte=? Where id=?";
-
+        String requete
+                = "Update commandes Set fournisseur=?,"
+                + "medicament=?,qtte=? Where id=?";
         try {
             PreparedStatement prepare = pdo.prepareStatement(requete);
             prepare.setString(1, fournisseur);
@@ -101,15 +106,16 @@ public class CommandeDAO extends DAO<Commandes>{
         }
         return result;
     }
-    
+
     //Delete
     @Override
     /*
     Cette méthode permet de supprimer une commande
     Paramètre : un objet Commandes
-    Type de retour : un booleén indiquant si la commande a pu être supprimé ou non
-    */
-    public Boolean delete(Commandes uneCommande){
+    Type de retour : 
+    un booleén indiquant si la commande a pu être supprimé ou non
+     */
+    public Boolean delete(Commandes uneCommande) {
         boolean result = false;
         if (pdo == null) {
             Connection();
@@ -124,23 +130,23 @@ public class CommandeDAO extends DAO<Commandes>{
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
-        
+
         return result;
     }
 
     //FindALL
-
     @Override
     /*
     Affiche toutes les commandes
     Paramètre : aucun
     Type de retour : une ArrayList de Commandes
-    */
+     */
     public ArrayList<Commandes> findAll() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        throw new UnsupportedOperationException("Not supported yet.");
+//To change body of generated methods, choose Tools | Templates.
     }
-    
-    public  static ArrayList<Commandes> donnerToutesLesCommandes() {
+
+    public static ArrayList<Commandes> donnerToutesLesCommandes() {
         if (pdo == null) {
             DAO.Connection();
         }
@@ -154,7 +160,8 @@ public class CommandeDAO extends DAO<Commandes>{
                 String fournisseur = commandesResultat.getString(2);
                 String medicament = commandesResultat.getString(3);
                 int qtte = commandesResultat.getInt(4);
-                Commandes uneCommande = new Commandes(idc, fournisseur, medicament, qtte);
+                Commandes uneCommande
+                        = new Commandes(idc, fournisseur, medicament, qtte);
                 lesCommandes.add(uneCommande);
             }
             commandesResultat.close();
@@ -166,11 +173,14 @@ public class CommandeDAO extends DAO<Commandes>{
         }
         return lesCommandes;
     }
+
     /*
     Cette méthode permet d'ajouter une commande
-    Paramètre : une chaine de caractères correspondant au fournisseur, une chaine de caractères correspondant au médicament, un entier correspondant à la quantité
+    Paramètre : une chaine de caractères correspondant au fournisseur, 
+    une chaine de caractères correspondant au médicament, 
+    un entier correspondant à la quantité
     Type de retour : un booléen indiquant si la commande a pu être passé ou non
-    */
+     */
     public static boolean ajouterCommande(String fournisseur, String medicament, int qtte) {
         if (pdo == null) {
             DAO.Connection();
@@ -181,7 +191,10 @@ public class CommandeDAO extends DAO<Commandes>{
             ResultSet stockResultat = state.executeQuery(requete1);
             if (stockResultat.next()) {
                 int idc = stockResultat.getInt(1) + 1;
-                String requete2 = "insert into commandes (idc,fournisseur, medicament, qtte) values(?, ?, ?, ?)";
+                String requete2
+                        = "insert into commandes "
+                        + "(idc,fournisseur, medicament, qtte) "
+                        + "values(?, ?, ?, ?)";
                 PreparedStatement prepare = pdo.prepareStatement(requete2);
                 prepare.setInt(1, idc);
                 prepare.setString(2, fournisseur);
@@ -196,10 +209,13 @@ public class CommandeDAO extends DAO<Commandes>{
         }
         return true;
     }
+
     /*
-     * Cette méthode permet de donner la liste de tous les fournisseurs sous formes de Collection.
+     * Cette méthode permet de donner la liste de tous les fournisseurs 
+    sous formes de Collection.
      * Paramètre : Aucun
-     * Type de retour : Collection de chaîne de caractères contenant la liste des fournisseurs.
+     * Type de retour : 
+    Collection de chaîne de caractères contenant la liste des fournisseurs.
      */
     public static ArrayList<String> donnerFournisseur() {
         if (pdo == null) {

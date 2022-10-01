@@ -10,15 +10,15 @@ import ppe2022_pharmacie.DAOClass.*;
 import javax.swing.JOptionPane;
 
 public class AfficherTousLesStock extends javax.swing.JFrame {
-    
+
     MedicamentDAO passerelleMedicament = new MedicamentDAO();
-    
+
     ArrayList<Medicament> unStock = new ArrayList<Medicament>();
     Scanner sc = new Scanner(System.in);
     private Utilisateur unUser;
 
     public AfficherTousLesStock(Utilisateur unUtilisateur) {
-        
+
         this.setResizable(false);
         this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         unUser = unUtilisateur;
@@ -35,8 +35,8 @@ public class AfficherTousLesStock extends javax.swing.JFrame {
         for (String c : ArrayCategorie) {
             cbxCategorie.addItem(c);
         }
-        
-        lblUser1.setText(unUtilisateur.getLogin()+": "+unUtilisateur.getService());
+
+        lblUser1.setText(unUtilisateur.getLogin() + ": " + unUtilisateur.getService());
     }
 
     @SuppressWarnings("unchecked")
@@ -452,8 +452,9 @@ public class AfficherTousLesStock extends javax.swing.JFrame {
         int choix = lstAfficherTous.getSelectedIndex();
         Object val = lstAfficherTous.getModel().getElementAt(choix);
         Medicament unPdt = (Medicament) val;
-        
-        PasserCommande g= new PasserCommande(unPdt);g.setVisible(true);
+
+        PasserCommande g = new PasserCommande(unPdt);
+        g.setVisible(true);
     }//GEN-LAST:event_lstAfficherTousMouseClicked
 
     private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
@@ -527,12 +528,13 @@ public class AfficherTousLesStock extends javax.swing.JFrame {
             lstAfficherTous.setModel(listModel);
         } else {
             DefaultListModel listModel = new DefaultListModel();
-            for (Medicament pdt : MedicamentDAO.AfficheEnFonctionCategorie(cbxCategorie.getSelectedItem().toString())) {
+            for (Medicament pdt
+                    : MedicamentDAO.AfficheEnFonctionCategorie(
+                            cbxCategorie.getSelectedItem().toString())) {
                 listModel.addElement(pdt);
             }
             lstAfficherTous.setModel(listModel);
         }
-
 
     }//GEN-LAST:event_btnCategorieMouseClicked
 
@@ -592,7 +594,6 @@ public class AfficherTousLesStock extends javax.swing.JFrame {
         //</editor-fold>
         //</editor-fold>
 
-        
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

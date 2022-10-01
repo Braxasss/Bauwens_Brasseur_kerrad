@@ -18,7 +18,8 @@ public class ServiceDAO extends DAO<Service> {
 
     @Override
     public Boolean create(Service unObjet) {
-        throw new UnsupportedOperationException("Not supported"); //To change body of generated methods, choose Tools | Templates.
+        throw new UnsupportedOperationException("Not supported");
+//To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
@@ -56,7 +57,8 @@ public class ServiceDAO extends DAO<Service> {
      * 
      */
     public Boolean update(Service unObjet) {
-        throw new UnsupportedOperationException("Not supported"); //To change body of generated methods, choose Tools | Templates.
+        throw new UnsupportedOperationException("Not supported");
+//To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
@@ -68,16 +70,17 @@ public class ServiceDAO extends DAO<Service> {
      * 
      */
     public Boolean delete(Service unObjet) {
-        throw new UnsupportedOperationException("Not supported"); //To change body of generated methods, choose Tools | Templates.
+        throw new UnsupportedOperationException("Not supported");
+//To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    
+
     /* Méthode findAll() : 
      * Ne prend pas de parametres.
      * Retourne une Collection de Service.
      * Affiche tout les services.
-    */
+     */
     public ArrayList<Service> findAll() {
         ArrayList<Service> lesService = new ArrayList<>();
         String requete = "select * from service";
@@ -106,7 +109,8 @@ public class ServiceDAO extends DAO<Service> {
         int idService = 0;
         try {
             Statement state = pdo.createStatement();
-            String requete = "select idservice from service where libelle='" + libelle + "'";
+            String requete
+                    = "select idservice from service where libelle='" + libelle + "'";
             ResultSet authResultat = state.executeQuery(requete);
             if (authResultat.next()) {
                 idService = authResultat.getInt(1);
@@ -117,5 +121,5 @@ public class ServiceDAO extends DAO<Service> {
         }
         return idService;
     }
-    
+
 }

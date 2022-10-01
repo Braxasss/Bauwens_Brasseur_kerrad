@@ -1,11 +1,12 @@
-package ppe2022_pharmacie;
+package ppe2022_pharmacie;                                                      
 import java.sql.Connection;
 import java.sql.DriverManager;
 public class PPE2022_Pharmacie {
 
     public static void main(String[] args) {
         
-        String url = "jdbc:postgresql://localhost:5432/PPE2022_Hopital_Pharmacie_BBP";
+        String url = 
+               "jdbc:postgresql://localhost:5432/PPE2022_Hopital_Pharmacie_BBP";
         String user = "postgres";
         String passwd = "root";
         //Etablir connexion

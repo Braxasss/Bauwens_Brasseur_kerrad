@@ -12,12 +12,11 @@ import java.util.ArrayList;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 /**
  *
  * @author sio2021
  */
-public class DemandeDAO extends DAO<Demande>{
+public class DemandeDAO extends DAO<Demande> {
 
     /*
     Methode Create:
@@ -26,13 +25,13 @@ public class DemandeDAO extends DAO<Demande>{
     -l'id du médicament 
     -la quantité nécessaire
     Elle retourne un Booléen qui vaut true si la commande a été crée ou un message d'erreur si non 
-    */
+     */
     @Override
     public Boolean create(Demande unObjet) {
         if (pdo == null) {
             Connection();
         }
-        boolean Check=false;
+        boolean Check = false;
         try {
             String requete = "insert into demande (idservice, idmedicament, quantite) values (?, ?, ?)";
             PreparedStatement prepare = pdo.prepareStatement(requete);
@@ -40,7 +39,7 @@ public class DemandeDAO extends DAO<Demande>{
             prepare.setInt(2, unObjet.getMedicament().getId());
             prepare.setInt(3, unObjet.getQtte());
             int res = prepare.executeUpdate();
-            Check=true;
+            Check = true;
         } catch (Exception e) {
             System.out.println(e);
             System.out.println("Erreur insertion demande");
@@ -51,15 +50,15 @@ public class DemandeDAO extends DAO<Demande>{
     /*
     Methode find:
     Elle permet de trouver une commande 
-    Elle prends en paramètres l'id d'une commande
+    Elle prends en paramètre l'id d'une commande
     Elle renvoie les informations de la commande
-    */
+     */
     @Override
     public Demande find(int id) {
         if (pdo == null) {
             Connection();
         }
-        Demande uneDemande=null;
+        Demande uneDemande = null;
         try {
             Statement state = pdo.createStatement();
             String requete = "SELECT * FROM demande where iddemande=?";
@@ -72,7 +71,7 @@ public class DemandeDAO extends DAO<Demande>{
                 int idS = userResultat.getInt(2);
                 int idM = userResultat.getInt(3);
                 int qtte = userResultat.getInt(4);
-                uneDemande = new Demande(idD,idS,idM,qtte);
+                uneDemande = new Demande(idD, idS, idM, qtte);
             }
             userResultat.close();
             state.close();
@@ -85,14 +84,14 @@ public class DemandeDAO extends DAO<Demande>{
 
     /*
     Methode update:
-    Elle mets a jour une demande en prenant pour paramètre: 
+    Elle met a jour une demande en prenant pour paramètre: 
     -Un objet Demande
     Elle retourne un Booléen qui vaut true si la commande a été modifié ou un message d'erreur si non 
-    */
+     */
     @Override
     public Boolean update(Demande unObjet) {
         String requete = "Update demande set idservice=?, idmedicament=?, quantite=? where iddemande=?";
-        boolean check=false;
+        boolean check = false;
         try {
             PreparedStatement prepare = pdo.prepareStatement(requete);
             prepare.setInt(1, unObjet.getService().getIdService());
@@ -100,7 +99,7 @@ public class DemandeDAO extends DAO<Demande>{
             prepare.setInt(3, unObjet.getQtte());
             prepare.setInt(4, unObjet.getIdD());
             prepare.executeUpdate();
-            check=true;
+            check = true;
         } catch (Exception e) {
             System.out.println(e);
             System.out.println("Erreur dans la modification de la Demande");
@@ -113,19 +112,19 @@ public class DemandeDAO extends DAO<Demande>{
     Elle supprime une demande en prenant pour paramètre: 
     -un objet demande
     Elle retourne un Booléen qui vaut true si la commande a été supprimé ou un message d'erreur si non 
-    */
+     */
     @Override
     public Boolean delete(Demande unObjet) {
         if (pdo == null) {
             Connection();
         }
-        boolean check=false;
+        boolean check = false;
         try {
             String requete = "delete from demande where iddemande=?";
             PreparedStatement prepare = pdo.prepareStatement(requete);
             prepare.setInt(1, unObjet.getIdD());
             prepare.executeUpdate();
-            check=true;
+            check = true;
         } catch (Exception e) {
             System.out.println(e);
             System.out.println("Erreur dans la suppression d'une Demande");
@@ -138,7 +137,7 @@ public class DemandeDAO extends DAO<Demande>{
     Elle affiche toutes les demande
     Elle ne prends pas de paramètres
     Elle retourne une liste de toutes les commandes
-    */
+     */
     @Override
     public ArrayList<Demande> findAll() {
         if (pdo == null) {
@@ -166,13 +165,13 @@ public class DemandeDAO extends DAO<Demande>{
         }
         return lesDemandes;
     }
-    
+
     /*
     Methode AfficherDemandeParService:
     Elle affiche toutes les commandes d'un meme service en prenant en paramètres:
     -l'id d'un service
     Elle retourne une liste de toutes les commandes du service  
-    */
+     */
     public ArrayList<Demande> AfficherDemandeParService(int idService) {
         if (pdo == null) {
             Connection();
@@ -181,10 +180,9 @@ public class DemandeDAO extends DAO<Demande>{
         try {
             String requete = "SELECT * FROM demande where idservice=?";
             PreparedStatement prepare = pdo.prepareStatement(requete);
-            
+
             prepare.setInt(1, idService);
-            
-            
+
             ResultSet demandeResultat = prepare.executeQuery();
 
             while (demandeResultat.next()) {
@@ -203,5 +201,5 @@ public class DemandeDAO extends DAO<Demande>{
         }
         return lesDemandes;
     }
-    
+
 }

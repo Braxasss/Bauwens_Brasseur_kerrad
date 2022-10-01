@@ -13,17 +13,18 @@ import java.util.ArrayList;
  * @author sio2021
  * @param <T>
  */
-
 public abstract class DAO<T> {
 
     protected static Connection pdo;
+
     /*
     Cette méthode permet de se connecter à la base de données PPE2022_Hopital_Pharmacie_BBP
     Aucun paramètre
     Aucun retour
-    */
+     */
     public static void Connection() {
-        String url = "jdbc:postgresql://192.168.1.34:5432/PPE2022_BDD_Pharmacie_BBP";
+        String url
+                = "jdbc:postgresql://192.168.1.34:5432/PPE2022_BDD_Pharmacie_BBP";
         String user = "postgres";
         String passwd = "Erty1234";
         //Etablir connexion
@@ -36,6 +37,7 @@ public abstract class DAO<T> {
             System.out.println(e.getMessage());
         }
     }
+
     /*
      * Cette méthode permet de créer un objet
      * Paramètre : un objet abstrait

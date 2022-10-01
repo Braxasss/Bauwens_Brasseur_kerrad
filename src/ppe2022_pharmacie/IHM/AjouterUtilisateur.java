@@ -55,11 +55,12 @@ public class AjouterUtilisateur extends javax.swing.JFrame {
 
         cbxService.setSelectedItem(unUser.getService());
     }
-    public AjouterUtilisateur(Utilisateur unUser,AfficherLesUsers frameuser) {
+
+    public AjouterUtilisateur(Utilisateur unUser, AfficherLesUsers frameuser) {
 
         this.setResizable(false);
         initComponents();
-        this.frameuser=frameuser;
+        this.frameuser = frameuser;
         btnValider.setVisible(false);
         lblOutputID.setText(String.valueOf(unUser.getIdUser()));
         passerelleUser.Connection();
@@ -214,25 +215,25 @@ public class AjouterUtilisateur extends javax.swing.JFrame {
             passe += unChar;
         }
         String hash = "";
-        try{
-        MessageDigest md = MessageDigest.getInstance("MD5");
-        byte raw[] = md.digest(passe.getBytes("UTF-8"));
-        hash = DatatypeConverter.printHexBinary(raw);
-        System.out.println(hash);
-        
-        String service = (String) cbxService.getSelectedItem();
-        int idService = passerelleService.getIdService(service);
+        try {
+            MessageDigest md = MessageDigest.getInstance("MD5");
+            byte raw[] = md.digest(passe.getBytes("UTF-8"));
+            hash = DatatypeConverter.printHexBinary(raw);
+            System.out.println(hash);
 
-        Utilisateur unUser = new Utilisateur(login, new Service(idService,service), 2, hash);
-        
-        passerelleUser.create(unUser);
-        JOptionPane.showMessageDialog(null, "Utilisateur créé");
-        dispose(); 
-        }catch(Exception e){
+            String service = (String) cbxService.getSelectedItem();
+            int idService = passerelleService.getIdService(service);
+
+            Utilisateur unUser
+                    = new Utilisateur(login, new Service(idService, service), 2, hash);
+
+            passerelleUser.create(unUser);
+            JOptionPane.showMessageDialog(null, "Utilisateur créé");
+            dispose();
+        } catch (Exception e) {
             System.out.println(e);
         }
-        
-        
+
     }//GEN-LAST:event_btnValiderMouseClicked
 
     private void btnModifierMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnModifierMouseClicked
@@ -255,14 +256,16 @@ public class AjouterUtilisateur extends javax.swing.JFrame {
 
         int idService = passerelleService.getIdService(service);
 
-        Utilisateur unUser = new Utilisateur(login, new Service(idService,service), idUser, hash);
-        
+        Utilisateur unUser
+                = new Utilisateur(login,
+                        new Service(idService, service), idUser, hash);
+
         passerelleUser.update(unUser);
         DefaultListModel listModel = new DefaultListModel();
         for (Utilisateur u : passerelleUser.findAll()) {
             listModel.addElement(u);
         }
-        
+
         JOptionPane.showMessageDialog(null, "Utilisateur Modifié");
         dispose();
 

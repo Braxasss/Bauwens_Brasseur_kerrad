@@ -20,8 +20,10 @@ import javax.swing.JFrame;
  * @author hbana
  */
 public class Authentification extends javax.swing.JFrame {
+
     private static final UtilisateurDAO passerelleUser = new UtilisateurDAO();
     private static final ServiceDAO passerelleService = new ServiceDAO();
+
     /**
      * Creates new form Authentification
      */
@@ -125,20 +127,20 @@ public class Authentification extends javax.swing.JFrame {
             byte raw[] = md.digest(passe.getBytes("UTF-8"));
             String hash;
             hash = DatatypeConverter.printHexBinary(raw);
-            
+
             int[] info = passerelleUser.Authentification(login, hash);
             Service service = passerelleService.find(info[1]);
             System.out.println(info[0]);
             System.out.println(info[1]);
             System.out.println(info[2]);
-            Utilisateur unUtilisateur = new Utilisateur(login, service, info[2], hash);
-            
-            
+            Utilisateur unUtilisateur
+                    = new Utilisateur(login, service, info[2], hash);
+
             if (info[0] == 0) {
                 lblOutput.setText("Erreur dans le couple Login/mdp");
             } else {
                 lblOutput.setText("Connexion Effectuee");
-                switch(info[1]){
+                switch (info[1]) {
                     case 0:
                         break;
                     case 1:
@@ -150,16 +152,20 @@ public class Authentification extends javax.swing.JFrame {
                         this.dispose();
                         break;
                     default:
-                        System.out.println(unUtilisateur.getService().getLibelle());
-                        new AfficherDemandes(false, unUtilisateur).setVisible(true);
+                        System.out.println(
+                                unUtilisateur.getService().getLibelle());
+                        new AfficherDemandes(false,
+                                unUtilisateur).setVisible(true);
                         this.dispose();
                         break;
                 }
             }
         } catch (NoSuchAlgorithmException ex) {
-            Logger.getLogger(Authentification.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Authentification.class.getName()).
+                    log(Level.SEVERE, null, ex);
         } catch (UnsupportedEncodingException ex) {
-            Logger.getLogger(Authentification.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Authentification.class.getName()).
+                    log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_btnConnexionMouseClicked
 

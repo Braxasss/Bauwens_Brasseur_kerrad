@@ -1,22 +1,23 @@
 package ppe2022_pharmacie.Metiers;
 
 public class Commandes {
+
     //Attribut
     private int idc;
     private String fournisseur;
     private String medicament;
     private int qtte;
-    
+
     //Constructeur
-    public Commandes(int pIdc, String pFournisseur, String pMedicament, int pQtte){
+    public Commandes(
+            int pIdc, String pFournisseur, String pMedicament, int pQtte) {
         idc = pIdc;
         fournisseur = pFournisseur;
         medicament = pMedicament;
         qtte = pQtte;
     }
-    
-    //Accesseur et mutateurs
 
+    //Accesseur et mutateurs
     public int getIdc() {
         return idc;
     }
@@ -48,9 +49,10 @@ public class Commandes {
     public void setQtte(int qtte) {
         this.qtte = qtte;
     }
-    
+
     @Override
     public String toString() {
-        return "| id: "+idc+" | Medicament: "+medicament+" | Quantitée: "+qtte+" | Fournisseur: "+fournisseur+"\n";
+        return "| id: " + idc + " | Medicament: " + medicament
+                + " | Quantitée: " + qtte + " | Fournisseur: " + fournisseur + "\n";
     }
 }

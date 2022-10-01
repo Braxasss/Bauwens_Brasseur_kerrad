@@ -7,12 +7,13 @@ package ppe2022_pharmacie.IHM;
 
 import ppe2022_pharmacie.Metiers.Medicament;
 import ppe2022_pharmacie.DAOClass.*;
+
 /**
  *
  * @author sio2021
  */
 public class AjouterMedicament extends javax.swing.JFrame {
-    
+
     private static final MedicamentDAO passerelleMedic = new MedicamentDAO();
 
     /**
@@ -23,7 +24,7 @@ public class AjouterMedicament extends javax.swing.JFrame {
         DAO.Connection();
         int intid = MedicamentDAO.derniereid();
         String id = String.valueOf(intid);
-        lblIdAfficher.setText(id+ "");
+        lblIdAfficher.setText(id + "");
     }
 
     /**
@@ -246,20 +247,25 @@ public class AjouterMedicament extends javax.swing.JFrame {
         String stringseuil = txtSeuil.getText();
         int seuil = Integer.parseInt(stringseuil);
         String categorie = txtCategorie.getText();
-        
+
         Medicament unMedicament = new Medicament(id, libelle, qtte, seuil, categorie);
         passerelleMedic.create(unMedicament);
-        
-        if(passerelleMedic.create(unMedicament) == true){
+
+        if (passerelleMedic.create(unMedicament) == true) {
             lblValider.setText("La commande est refusévalidé.");
-        }else{
+        } else {
             lblValider.setText("La commande est validé.");
         };
 
     }//GEN-LAST:event_btnValiderMouseClicked
 
     private void btnVisualiserMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVisualiserMouseClicked
-        String recap = "Id : "+lblIdAfficher .getText()+" \nLibelle : "+txtLibelle.getText()+" \nQuantité : "+txtQuantite.getText()+" \nSeuil : "+txtSeuil.getText()+" \nCatégorie : "+txtCategorie.getText();
+        String recap
+                = "Id : " + lblIdAfficher.getText()
+                + " \nLibelle : " + txtLibelle.getText()
+                + " \nQuantité : " + txtQuantite.getText()
+                + " \nSeuil : " + txtSeuil.getText()
+                + " \nCatégorie : " + txtCategorie.getText();
         txtaVisu.setText(recap);
     }//GEN-LAST:event_btnVisualiserMouseClicked
 

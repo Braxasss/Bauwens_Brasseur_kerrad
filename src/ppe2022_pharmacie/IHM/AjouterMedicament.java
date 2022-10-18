@@ -5,6 +5,7 @@
  */
 package ppe2022_pharmacie.IHM;
 
+import javax.swing.JOptionPane;
 import ppe2022_pharmacie.Metiers.Medicament;
 import ppe2022_pharmacie.DAOClass.*;
 
@@ -239,24 +240,28 @@ public class AjouterMedicament extends javax.swing.JFrame {
 
     private void btnValiderMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnValiderMouseClicked
 
-        String stringid = lblIdAfficher.getText();
-        int id = Integer.parseInt(stringid);
-        String libelle = txtLibelle.getText();
-        String stringqtte = txtQuantite.getText();
-        int qtte = Integer.parseInt(stringqtte);
-        String stringseuil = txtSeuil.getText();
-        int seuil = Integer.parseInt(stringseuil);
-        String categorie = txtCategorie.getText();
+        try {
+            String stringid = lblIdAfficher.getText();
+            int id = Integer.parseInt(stringid);
+            String libelle = txtLibelle.getText();
+            String stringqtte = txtQuantite.getText();
+            int qtte = Integer.parseInt(stringqtte);
+            String stringseuil = txtSeuil.getText();
+            int seuil = Integer.parseInt(stringseuil);
+            String categorie = txtCategorie.getText();
 
-        Medicament unMedicament = 
-                new Medicament(id, libelle, qtte, seuil, categorie);
-        passerelleMedic.create(unMedicament);
+            Medicament unMedicament = 
+                    new Medicament(id, libelle, qtte, seuil, categorie);
+            passerelleMedic.create(unMedicament);
 
-        if (passerelleMedic.create(unMedicament) == true) {
-            lblValider.setText("La commande est refusé.");
-        } else {
-            lblValider.setText("La commande est validé.");
-        };
+            if (passerelleMedic.create(unMedicament) == true) {
+                lblValider.setText("La commande est refusé.");
+            } else {
+                lblValider.setText("La commande est validé.");
+            };
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Veuillez insérer un seuil et une quantité valide");
+        }
 
     }//GEN-LAST:event_btnValiderMouseClicked
 

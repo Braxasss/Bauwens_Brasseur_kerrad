@@ -1,8 +1,23 @@
-package ppe2022_pharmacie;
-
+package ppe2022_pharmacie;                                                      
+import java.sql.Connection;
+import java.sql.DriverManager;
 public class PPE2022_Pharmacie {
 
     public static void main(String[] args) {
+        
+        String url = 
+               "jdbc:postgresql://localhost:5432/PPE2022_Hopital_Pharmacie_BBP";
+        String user = "postgres";
+        String passwd = "root";
+        //Etablir connexion
+        try {
+            Connection pdo = DriverManager.getConnection(url, user, passwd);
+            System.out.println("Connexion effective !");
+
+        } catch (Exception e) {
+            System.out.println("Connexion refusé !");
+            System.out.println(e.getMessage());
+        }
 //        public static int avoirQtte(int idD) {
 //        int qtteD = 0;
 //        if (pdo == null) {
